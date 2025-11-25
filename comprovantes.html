@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+      <div class="header-container">
+        <img src="imagens/Logo-Unidesc_Branco.svg" alt="logo" class="Logo" />
+      </div>
+    </header>
+
+    <header class="uni-boleto-header" role="banner">
+        <div class="uni-boleto-container uni-boleto-header-content">
+            <h1 class="uni-boleto-logo">🎓 Unidesc Controle</h1>
+        </div>
+    </header>
+
+    <main class="uni-boleto-container" role="main">
+
+        <h2>Comprovantes de Pagamento</h2>
+
+        <section class="uni-boleto-toolbar" role="toolbar" aria-label="Filtros e Comprovantes">
+            <div class="uni-boleto-filters">
+                <button class="uni-boleto-filter-btn active" data-filter="all">Todos</button>
+                <button class="uni-boleto-filter-btn" data-filter="Mensalidade" aria-label="Filtrar Mensalidade">Mensalidades</button>
+                <button class="uni-boleto-filter-btn" data-filter="Taxa" aria-label="Filtrar Taxas">Taxas</button>
+                <button class="uni-boleto-filter-btn" data-filter="Multa" aria-label="Filtrar Multas">Multas</button>
+            </div>
+            
+            <div class="uni-boleto-search-action">
+                <input type="text" id="monthFilterInput" class="uni-boleto-search-input" value="Novembro / 2025" readonly style="flex-grow: 1.5; text-align: left;" aria-label="Mês e ano selecionado para filtro">
+                
+                <button class="uni-boleto-action-btn primary" onclick="openMonthFilter()" aria-label="Abrir filtro de Mês e Ano">
+                    <span class="material-icons" style="font-size: 1.1em;">Filtrar</span>  
+                </button>
+            </div>
+        </section>
+
+        <div class="uni-boleto-desktop-header" aria-hidden="true">
+            <div class="uni-boleto-desktop-cell">Descrição</div>
+            <div class="uni-boleto-desktop-cell">Valor</div>
+            <div class="uni-boleto-desktop-cell">Data Pagamento</div>
+            <div class="uni-boleto-desktop-cell">Tipo</div>
+            <div class="uni-boleto-desktop-cell">Status</div>
+            <div class="uni-boleto-desktop-cell">Ações</div>
+        </div>
+
+        <ul class="uni-boleto-list">
+            
+            <li class="uni-boleto-card" data-status="Pago" data-type="Mensalidade">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Mensalidade Out/2025</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 657,00</div>
+                    
+                    <div class="uni-boleto-desktop-cell">05/10/2025</div> 
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Data:</span> <span>05/10/2025</span>
+                    </div>
+
+                    <div class="uni-boleto-desktop-cell">Mensalidade</div> 
+
+                    <div class="uni-boleto-desktop-cell">
+                        <span class="uni-boleto-status-tag" data-status="Pago">DISPONÍVEL</span>
+                    </div>
+                    
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <a href="/api/comprovante/201/pdf" target="_blank" class="uni-boleto-action-btn-card pay" aria-label="Baixar PDF do comprovante">
+                            <span class="material-icons" style="font-size: 1.1em;">Baixar PDF</span> 
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="uni-boleto-card" data-status="Pago" data-type="Mensalidade">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Mensalidade Set/2025</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 657,00</div>
+                    
+                    <div class="uni-boleto-desktop-cell">12/09/2025</div> 
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Data:</span> <span>12/09/2025</span>
+                    </div>
+
+                    <div class="uni-boleto-desktop-cell">Mensalidade</div> 
+
+                    <div class="uni-boleto-desktop-cell">
+                        <span class="uni-boleto-status-tag" data-status="Pago">DISPONÍVEL</span>
+                    </div>
+                
+                    
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <a href="/api/comprovante/202/pdf" target="_blank" class="uni-boleto-action-btn-card pay" aria-label="Baixar PDF do comprovante">
+                            <span class="material-icons" style="font-size: 1.1em;">Baixar PDF</span> 
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="uni-boleto-card" data-status="Pago" data-type="Taxa">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Taxa de Biblioteca</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 45,00</div>
+                    
+                    <div class="uni-boleto-desktop-cell">01/12/2025</div> 
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Data:</span> <span>01/12/2025</span>
+                    </div>
+
+                    <div class="uni-boleto-desktop-cell">Taxa</div> 
+
+                    <div class="uni-boleto-desktop-cell">
+                        <span class="uni-boleto-status-tag" data-status="Pago">DISPONÍVEL</span>
+                    </div>
+                    
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <a href="/api/comprovante/203/pdf" target="_blank" class="uni-boleto-action-btn-card pay" aria-label="Baixar PDF do comprovante">
+                            <span class="material-icons" style="font-size: 1.1em;">Baixar PDF</span> 
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="uni-boleto-card" data-status="A vencer" data-type="Multa" style="border-left-color: #ffab00;">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="A vencer">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Multa Reaplicação</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 20,00</div>
+                    
+                    <div class="uni-boleto-desktop-cell">15/09/2025</div> 
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Data:</span> <span>15/09/2025</span>
+                    </div>
+
+                    <div class="uni-boleto-desktop-cell">Multa</div>
+
+                    <div class="uni-boleto-desktop-cell">
+                        <span class="uni-boleto-status-tag" data-status="A vencer">DISPONÍVEL</span>
+                    </div>
+                    
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <a href="/api/comprovante/204/pdf" target="_blank" class="uni-boleto-action-btn-card pay" aria-label="Baixar PDF do comprovante">
+                            <span class="material-icons" style="font-size: 1.1em;">Baixar PDF</span> 
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="uni-boleto-card" data-status="Vencido" data-type="Seguro" style="border-left-color: #d32f2f;">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Vencido">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Seguro Acadêmico (Pix)</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 75,50</div>
+                    
+                    <div class="uni-boleto-desktop-cell">30/11/2025</div> 
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Data:</span> <span>30/11/2025</span>
+                    </div>
+
+                    <div class="uni-boleto-desktop-cell">Seguro</div> 
+
+                    <div class="uni-boleto-desktop-cell">
+                        <span class="uni-boleto-status-tag" data-status="Vencido">INDISPONÍVEL</span>
+                    </div>               
+                    
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                         <button class="uni-boleto-action-btn-card pay" onclick="openModal(205)" aria-label="Ver detalhes do comprovante">Ver Detalhes</button>
+                        <button class="uni-boleto-action-btn-card" disabled aria-label="Comprovante indisponível">Baixar PDF</button>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <nav class="uni-boleto-pagination" role="navigation" aria-label="Paginação de Comprovantes">
+            <a href="#" class="uni-boleto-page-link" aria-label="Página anterior">Anterior</a>
+            <a href="#" class="uni-boleto-page-link active" aria-current="page">1</a>
+            <a href="#" class="uni-boleto-page-link">2</a>
+            <a href="#" class="uni-boleto-page-link">3</a>
+            <a href="#" class="uni-boleto-page-link" aria-label="Próxima página">Próxima</a>
+        </nav>
+
+    </main>
+
+    <div class="uni-boleto-modal-overlay" id="boletoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="uni-boleto-modal-content">
+            <button class="uni-boleto-modal-close" onclick="closeModal()" aria-label="Fechar Detalhes do Comprovante">&times;</button>
+            <div class="uni-boleto-modal-details">
+                <h3 id="modalTitle">Detalhes do Comprovante</h3>
+                
+                <div class="uni-boleto-detail-item">
+                    <strong>Referência:</strong>
+                    <span id="modalDesc"></span>
+                </div>
+                
+                <div class="uni-boleto-detail-item">
+                    <strong>Valor Pago:</strong>
+                    <span id="modalValor"></span>
+                </div>
+                
+                <div class="uni-boleto-detail-item">
+                    <strong>Data da Transação:</strong>
+                    <span id="modalDataHora"></span>
+                </div>
+                
+                <div class="uni-boleto-detail-item">
+                    <strong>Tipo de Despesa:</strong>
+                    <span id="modalTipo"></span>
+                </div>
+                
+                <div class="uni-boleto-detail-item">
+                    <strong>Status:</strong>
+                    <span id="modalStatus" class="uni-boleto-status-tag"></span>
+                </div>
+                
+                <hr>
+                
+                <h4>Ação Rápida</h4>
+                
+                <div class="uni-boleto-detail-item">
+                    <strong>Observações:</strong>
+                    <span id="modalObs"></span>
+                </div>
+
+                <div class="uni-boleto-qr-section" id="modalComprovanteSection">
+                    <p>Baixe o comprovante oficial em PDF:</p>
+                    <a href="#" id="modalComprovanteLink" target="_blank" class="uni-boleto-action-btn-card primary" style="padding: 10px 20px; text-decoration: none;">
+                        <span class="material-icons" style="font-size: 1.1em;">file_download</span> Baixar Comprovante
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+      <div id="main_footer">
+        <div class="footer_p1">
+          <img
+            src="imagens/Logo-Unidesc_Branco.svg"
+            alt="logo"
+            class="img_footer"
+          />
+        </div>
+
+        <div class="footer_p2">
+          <div class="footer_links">
+            <div class="footer_container footer_colunas">
+              <div class="footer_coluna">
+                <h3>
+                  Consulte aqui o cadastro da instituição no sistema e-MEC
+                </h3>
+                <img src="imagens/sistema-emec-unidesc-5.webp" alt="" />
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Cursos</h3>
+                <ul class="link_list">
+                  <li><a href="#">Graduação Presencial</a></li>
+                  <li>
+                    <a href="#">Graduação EAD Digital (Parceria UniCESP)</a>
+                  </li>
+                  <li>
+                    <a href="#">Graduação 100% EAD (parceria UniSant'Anna)</a>
+                  </li>
+                  <li><a href="#">Pós-Graduação</a></li>
+                  <li><a href="#">Extensão</a></li>
+                  <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Endereços</h3>
+                <div class="endereços">
+                  <p>
+                    <strong>Campus I</strong>
+                    BR 040, Km 19.7, Lotes 1/12, Gleba F<br />
+                    Parque Esplanada III<br />
+                    Valparaíso de Goiás – GO<br />
+                    CEP 72.876-353<br />
+                    (61) 3878-3100
+                  </p>
+                  <p>
+                    <strong>Campus II</strong>
+                    Quadra 09, Esp. Lote D, Área Especial, Gleba D1,<br />
+                    Campus Universitário Bairro: Parque Rio Branco<br />
+                    CEP 72.870-000<br />
+                    Valparaíso de Goiás – GO<br />
+                    (61) 3627-9250
+                  </p>
+                </div>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Atendimentos</h3>
+                <ul class="Lista_contatos">
+                  <li><i class="bi bi-telephone-fill"></i> (61) 3878-3100</li>
+                  <li><i class="bi bi-whatsapp"></i> (61) 3629-9323</li>
+                  <li><i class="bi bi-headset"></i> Ouvidoria</li>
+                  <li><i class="bi bi-envelope"></i> contato@unidesc.edu.br</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p class="copyright_1">
+          © 2025 - Desenvolvido por
+          <a href="#"
+            ><strong>Arthur de Araujo Batista</strong> -
+            Arthur.Batista0167@sounidesc.com.br</a
+          >
+        </p>
+
+        <p class="copyright_2">
+          Todas as marcas registradas e direitos autorais pertencem aos seus
+          respectivos proprietários.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+        // Dados de Exemplo para a tela de Comprovantes (JSON)
+        const mockComprovantes = [
+            { "id": 201, "descricao": "Mensalidade Out/2025", "valor": "R$ 657,00", "data_pagamento": "05/10/2025 às 14:30", "tipo": "Mensalidade", "status": "DISPONÍVEL", "obs": "Documento gerado após confirmação do pagamento.", "disponivel": true },
+            { "id": 202, "descricao": "Mensalidade Set/2025", "valor": "R$ 657,00", "data_pagamento": "12/09/2025 às 10:00", "tipo": "Mensalidade", "status": "DISPONÍVEL", "obs": "Documento gerado após confirmação do pagamento.", "disponivel": true },
+            { "id": 203, "descricao": "Taxa de Biblioteca", "valor": "R$ 45,00", "data_pagamento": "01/12/2025 às 08:15", "tipo": "Taxa", "status": "DISPONÍVEL", "obs": "Taxa paga via boleto bancário.", "disponivel": true },
+            { "id": 204, "descricao": "Multa Reaplicação", "valor": "R$ 20,00", "data_pagamento": "15/09/2025 às 17:50", "tipo": "Multa", "status": "DISPONÍVEL", "obs": "Referente à multa por atraso na inscrição. Comprovante disponível.", "disponivel": true },
+            { "id": 205, "descricao": "Seguro Acadêmico (Pix)", "valor": "R$ 75,50", "data_pagamento": "30/11/2025 às 09:30", "tipo": "Seguro", "status": "INDISPONÍVEL", "obs": "Aguardando confirmação final da seguradora para liberação do comprovante.", "disponivel": false }
+        ];
+
+        // Reutilizando a função de abrir modal (adaptada)
+        function openModal(id) {
+            const comprovante = mockComprovantes.find(c => c.id === id);
+            const modal = document.getElementById('boletoModal');
+
+            if (!comprovante) return;
+
+            document.getElementById('modalDesc').textContent = comprovante.descricao;
+            document.getElementById('modalValor').textContent = comprovante.valor;
+            document.getElementById('modalDataHora').textContent = comprovante.data_pagamento;
+            document.getElementById('modalTipo').textContent = comprovante.tipo;
+            document.getElementById('modalObs').textContent = comprovante.obs;
+
+            const modalStatus = document.getElementById('modalStatus');
+            modalStatus.textContent = comprovante.status;
+            // Adaptação dos status para as cores existentes (DISPONÍVEL=Pago, INDISPONÍVEL=Vencido/Alerta)
+            modalStatus.setAttribute('data-status', comprovante.disponivel ? 'Pago' : 'Vencido');
+            
+            const comprovanteSection = document.getElementById('modalComprovanteSection');
+            const comprovanteLink = document.getElementById('modalComprovanteLink');
+            
+            if (comprovante.disponivel) {
+                comprovanteSection.style.display = 'block';
+                comprovanteLink.href = `/api/comprovante/${id}/pdf`;
+                comprovanteLink.textContent = ' Baixar Comprovante Oficial';
+                comprovanteLink.style.cursor = 'pointer';
+            } else {
+                comprovanteSection.style.display = 'block';
+                comprovanteLink.removeAttribute('href');
+                comprovanteLink.textContent = ' Comprovante Pendente ou Indisponível';
+                comprovanteLink.style.cursor = 'not-allowed';
+            }
+            
+            modal.classList.add('open');
+            modal.focus();
+        }
+
+        function closeModal() {
+            document.getElementById('boletoModal').classList.remove('open');
+        }
+
+        // Simulação da função de filtro de Mês/Ano (reutilizada)
+        function openMonthFilter() {
+            const currentMonthInput = document.getElementById('monthFilterInput');
+            const currentMonth = currentMonthInput.value;
+            
+            if (currentMonth.includes("Novembro")) {
+                currentMonthInput.value = "Outubro / 2025";
+            } else {
+                currentMonthInput.value = "Novembro / 2025";
+            }
+            // Aqui você chamaria a função para recarregar a lista (e.g., loadComprovantes('Outubro'))
+        }
+        
+        // Função de filtro adaptada para 'data-type'
+        document.querySelectorAll('.uni-boleto-filter-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const filter = event.target.getAttribute('data-filter');
+                
+                document.querySelectorAll('.uni-boleto-filter-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+
+                document.querySelectorAll('.uni-boleto-card').forEach(card => {
+                    const type = card.getAttribute('data-type');
+
+                    if (filter === 'all' || type === filter) {
+                        card.style.display = 'list-item';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+    </script>
+    
+</body>
+</html>

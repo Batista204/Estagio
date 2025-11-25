@@ -1,0 +1,61 @@
+
+{
+  "autores": [
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "email": "joao.silva@exemplo.com"
+    },
+    {
+      "id": 2,
+      "nome": "Maria Oliveira",
+      "email": "maria.oliveira@exemplo.com"
+    }
+  ],
+  "artigos": [
+    {
+      "id": 101,
+      "titulo": "Introdução ao Angular",
+      "conteudo": "Neste artigo, vamos explorar os conceitos básicos do framework Angular...",
+      "dataPublicacao": "2025-09-22T10:00:00Z",
+      "autorId": 1
+    },
+    {
+      "id": 102,
+      "titulo": "Gerenciamento de Estado com React",
+      "conteudo": "Context API e Redux são duas formas populares de gerenciar o estado em aplicações React...",
+      "dataPublicacao": "2025-09-23T11:30:00Z",
+      "autorId": 2
+    },
+    {
+      "id": 103,
+      "titulo": "Novidades no TypeScript 5.0",
+      "conteudo": "O TypeScript 5.0 trouxe decoradores e muitas outras melhorias de performance...",
+      "dataPublicacao": "2025-09-23T15:00:00Z",
+      "autorId": 1
+    }
+  ],
+  "comentarios": [
+    {
+      "id": 1,
+      "texto": "Excelente artigo introdutório!",
+      "autorComentario": "Carlos",
+      "dataComentario": "2025-09-22T14:20:00Z",
+      "artigoId": 101
+    },
+    {
+      "id": 2,
+      "texto": "Muito útil, obrigado por compartilhar.",
+      "autorComentario": "Ana",
+      "dataComentario": "2025-09-23T12:05:00Z",
+      "artigoId": 102
+    },
+    {
+      "id": 3,
+      "texto": "Estava com dúvidas sobre o Context API, ajudou muito.",
+      "autorComentario": "Pedro",
+      "dataComentario": "2025-09-23T16:00:00Z",
+      "artigoId": 102
+    }
+  ]
+}

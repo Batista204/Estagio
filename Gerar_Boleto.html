@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <img src="imagens/Logo-Unidesc_Branco.svg" alt="logo" class="Logo" />
+        </div>
+    </header>
+
+    <header class="uni-boleto-header" role="banner">
+        <div class="uni-boleto-container uni-boleto-header-content">
+            <h1 class="uni-boleto-logo">🎓 Unidesc Controle</h1>
+        </div>
+    </header>
+
+    <main class="uni-boleto-container" role="main">
+
+    <h2>💰 Iniciar Pagamento de Mensalidades</h2>
+    
+    <section class="uni-boleto-card" style="margin-bottom: 20px;">
+        <h3 style="color: #004d40;">Resumo Financeiro do Semestre (Julho - Dezembro)</h3>
+        
+        <div class="uni-boleto-summary-grid">
+            
+            <div class="uni-boleto-summary-item uni-boleto-summary-item-total">
+                <strong>Total Semestral:</strong> 
+                <p class="uni-boleto-summary-value">R$ 3.942,00</p>
+                <small>6 meses (Julho a Dezembro)</small>
+            </div>
+
+            <div class="uni-boleto-summary-item uni-boleto-summary-item-paid">
+                <strong>Já Gasto/Pago:</strong> 
+                <p id="gasto" class="uni-boleto-summary-value uni-boleto-paid-value">R$ 2.628,00</p>
+                <small>4 de 6 meses (Julho a Outubro)</small>
+            </div>
+
+            <div class="uni-boleto-summary-item uni-boleto-summary-item-due">
+                <strong>Falta Pagar:</strong> 
+                <p id="falta" class="uni-boleto-summary-value uni-boleto-due-value">R$ 1.314,00</p>
+                <small>2 meses (Novembro e Dezembro)</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="uni-boleto-card">
+        <h3 style="color: #004d40; margin-bottom: 15px;">Selecione o(s) Boleto(s) a Gerar/Pagar:</h3>
+
+        <form id="paymentForm" onsubmit="handlePayment(event)">
+            
+            <div class="uni-boleto-option-group">
+                <input type="checkbox" id="pagar_novembro" name="meses" value="Novembro" checked onchange="updateTotal()" style="margin-right: 10px;">
+                <label for="pagar_novembro" class="uni-boleto-option-label">
+                    Mensalidade **Novembro / 2025**
+                    <span class="uni-boleto-option-details">(R$ 657,00)</span>
+                </label>
+            </div>
+
+            <div class="uni-boleto-option-group" style="border-bottom: none; margin-bottom: 20px;">
+                <input type="checkbox" id="pagar_dezembro" name="meses" value="Dezembro" checked onchange="updateTotal()" style="margin-right: 10px;">
+                <label for="pagar_dezembro" class="uni-boleto-option-label">
+                    Mensalidade **Dezembro / 2025**
+                    <span class="uni-boleto-option-details">(R$ 657,00)</span>
+                </label>
+            </div>
+            
+            <div class="uni-boleto-total-section">
+                <p class="uni-boleto-total-label">Valor Total Selecionado:</p>
+                <p id="valor_total_selecionado" class="uni-boleto-total-value">
+                    R$ 1.314,00
+                </p>
+
+                <button type="submit" class="uni-boleto-action-btn primary uni-boleto-submit-btn">
+                    <span class="material-icons" style="font-size: 1.3em;">payment</span> Gerar Boletos e Pagar
+                </button>
+            </div>
+        </form>
+
+        
+    </section>
+    </main>
+
+    <footer>
+      <div id="main_footer">
+        <div class="footer_p1">
+          <img
+            src="imagens/Logo-Unidesc_Branco.svg"
+            alt="logo"
+            class="img_footer"
+          />
+        </div>
+
+        <div class="footer_p2">
+          <div class="footer_links">
+            <div class="footer_container footer_colunas">
+              <div class="footer_coluna">
+                <h3>
+                  Consulte aqui o cadastro da instituição no sistema e-MEC
+                </h3>
+                <img src="imagens/sistema-emec-unidesc-5.webp" alt="" />
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Cursos</h3>
+                <ul class="link_list">
+                  <li><a href="#">Graduação Presencial</a></li>
+                  <li>
+                    <a href="#">Graduação EAD Digital (Parceria UniCESP)</a>
+                  </li>
+                  <li>
+                    <a href="#">Graduação 100% EAD (parceria UniSant'Anna)</a>
+                  </li>
+                  <li><a href="#">Pós-Graduação</a></li>
+                  <li><a href="#">Extensão</a></li>
+                  <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Endereços</h3>
+                <div class="endereços">
+                  <p>
+                    <strong>Campus I</strong>
+                    BR 040, Km 19.7, Lotes 1/12, Gleba F<br />
+                    Parque Esplanada III<br />
+                    Valparaíso de Goiás – GO<br />
+                    CEP 72.876-353<br />
+                    (61) 3878-3100
+                  </p>
+                  <p>
+                    <strong>Campus II</strong>
+                    Quadra 09, Esp. Lote D, Área Especial, Gleba D1,<br />
+                    Campus Universitário Bairro: Parque Rio Branco<br />
+                    CEP 72.870-000<br />
+                    Valparaíso de Goiás – GO<br />
+                    (61) 3627-9250
+                  </p>
+                </div>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Atendimentos</h3>
+                <ul class="Lista_contatos">
+                  <li><i class="bi bi-telephone-fill"></i> (61) 3878-3100</li>
+                  <li><i class="bi bi-whatsapp"></i> (61) 3629-9323</li>
+                  <li><i class="bi bi-headset"></i> Ouvidoria</li>
+                  <li><i class="bi bi-envelope"></i> contato@unidesc.edu.br</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p class="copyright_1">
+          © 2025 - Desenvolvido por
+          <a href="#"
+            ><strong>Arthur de Araujo Batista</strong> -
+            Arthur.Batista0167@sounidesc.com.br</a
+          >
+        </p>
+
+        <p class="copyright_2">
+          Todas as marcas registradas e direitos autorais pertencem aos seus
+          respectivos proprietários.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+        const VALOR_MENSALIDADE = 657.00;
+        
+        // Função para formatar o valor em BRL
+        const formatBRL = (value) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        // Função para atualizar o valor total selecionado
+        function updateTotal() {
+            const novChecked = document.getElementById('pagar_novembro').checked;
+            const dezChecked = document.getElementById('pagar_dezembro').checked;
+            let total = 0;
+
+            if (novChecked) {
+                total += VALOR_MENSALIDADE;
+            }
+            if (dezChecked) {
+                total += VALOR_MENSALIDADE;
+            }
+
+            document.getElementById('valor_total_selecionado').textContent = formatBRL(total);
+            
+            // Habilita/Desabilita o botão de pagar
+            const submitButton = document.querySelector('button[type="submit"]');
+            submitButton.disabled = total === 0;
+            submitButton.textContent = total > 0 ? 'Gerar Boletos e Pagar' : 'Selecione um Mês';
+            
+            // Aplica o estilo de botão desabilitado se o total for zero
+            if (total === 0) {
+                 submitButton.classList.remove('primary');
+                 submitButton.style.backgroundColor = '#ccc';
+                 submitButton.style.color = '#666';
+            } else {
+                 submitButton.classList.add('primary');
+                 submitButton.style.backgroundColor = ''; 
+                 submitButton.style.color = '#004d40';
+            }
+        }
+
+        // Função que lida com o envio do formulário
+        function handlePayment(event) {
+            event.preventDefault(); // Impede o envio tradicional do formulário
+            
+            const selectedMonths = Array.from(document.querySelectorAll('input[name="meses"]:checked'))
+                                       .map(checkbox => checkbox.value);
+
+            const total = selectedMonths.length * VALOR_MENSALIDADE;
+
+            if (selectedMonths.length === 0) {
+                alert("Por favor, selecione pelo menos uma mensalidade para gerar o pagamento.");
+                return;
+            }
+
+            if (selectedMonths.length > 1) {
+                alert(`Confirma o pagamento de boletos agrupados para ${selectedMonths.join(' e ')} no valor de ${formatBRL(total)}?`);
+                // **PRÓXIMA AÇÃO REAL**: Redirecionar para o gateway de pagamento ou gerar um boleto único.
+            } else {
+                alert(`Confirma o pagamento do boleto de ${selectedMonths[0]} no valor de ${formatBRL(total)}?`);
+                // **PRÓXIMA AÇÃO REAL**: Gerar o boleto individual e prosseguir.
+            }
+        }
+
+        // Garante que o total inicial seja calculado quando a página carregar
+        document.addEventListener('DOMContentLoaded', updateTotal);
+    </script>
+</body>
+</html>

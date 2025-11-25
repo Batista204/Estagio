@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unidesc</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-container">
+        <img src="imagens/Logo-Unidesc_Branco.svg" alt="logo" class="Logo" />
+      </div>
+    </header>
+
+    <header class="uni-boleto-header" role="banner">
+      <div class="uni-boleto-container uni-boleto-header-content">
+        <h1 class="uni-boleto-logo">
+          🎓 Unidesc Controle
+        </h1>
+      </div>
+    </header>
+
+    <main class="uni-boleto-container" role="main">
+      <h2>Histórico de Pagamentos</h2>
+
+      <section
+        class="uni-boleto-toolbar"
+        role="toolbar"
+        aria-label="Filtros e Histórico"
+      >
+        <div class="uni-boleto-filters">
+          <button class="uni-boleto-filter-btn active" data-filter="all">
+            Todos
+          </button>
+          <button
+            class="uni-boleto-filter-btn"
+            data-filter="PIX"
+            aria-label="Filtrar por PIX"
+          >
+            PIX
+          </button>
+          <button
+            class="uni-boleto-filter-btn"
+            data-filter="Boleto"
+            aria-label="Filtrar por Boleto"
+          >
+            Boleto
+          </button>
+          <button
+            class="uni-boleto-filter-btn"
+            data-filter="Cartão"
+            aria-label="Filtrar por Cartão"
+          >
+            Cartão
+          </button>
+          <button
+            class="uni-boleto-filter-btn"
+            data-filter="Estornado"
+            aria-label="Filtrar Estornados"
+          >
+            Estornados
+          </button>
+        </div>
+
+        <div class="uni-boleto-search-action">
+                <input type="search" class="uni-boleto-search-input" placeholder="Buscar por descrição ou mês..." aria-label="Buscar pagamentos">
+                <button class="uni-boleto-action-btn primary" onclick="alert('Funcionalidade de filtro por mês/ano ativada!')" aria-label="Abrir filtro de Mês e Ano">
+                    <span class="material-icons" style="font-size: 1.1em;">Filtrar</span>
+                </button>
+        </div>
+
+      </section>
+
+      <div class="uni-boleto-desktop-header" aria-hidden="true">
+        <div class="uni-boleto-desktop-cell">Descrição</div>
+        <div class="uni-boleto-desktop-cell">Valor</div>
+        <div class="uni-boleto-desktop-cell">Data Pagamento</div>
+        <div class="uni-boleto-desktop-cell">Método</div>
+        <div class="uni-boleto-desktop-cell">Status</div>
+        <div class="uni-boleto-desktop-cell">Ações</div>
+      </div>
+
+      <ul class="uni-boleto-list" id="paymentList">
+        <li class="uni-boleto-card" data-status="Pago" data-method="PIX">
+          <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+            <div class="uni-boleto-card-title uni-boleto-desktop-cell">
+              Mensalidade Out/2025
+            </div>
+            <div class="uni-boleto-card-value uni-boleto-desktop-cell">
+              R$ 657,00
+            </div>
+            <div class="uni-boleto-card-details">
+              <span class="uni-boleto-detail-label">Data:</span>
+              <span>05/10/2025</span>
+            </div>
+            <div class="uni-boleto-desktop-cell">05/10/2025</div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <strong class="uni-boleto-detail-value">PIX</strong>
+            </div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <span class="uni-boleto-status-tag" data-status="Pago">Pago</span>
+            </div>
+
+            <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+              <a
+                href="/api/comprovante/101/pdf"
+                target="_blank"
+                class="uni-boleto-action-btn-card"
+                aria-label="Baixar Comprovante PDF"
+              >
+                <span class="material-icons" style="font-size: 1.1em">PDF</span>
+              </a>
+              <button
+                class="uni-boleto-action-btn-card pay"
+                onclick="openModal(101)"
+                aria-label="Ver detalhes do pagamento"
+              >
+                Ver detalhes
+              </button>
+            </div>
+          </div>
+        </li>
+
+        <li class="uni-boleto-card" data-status="Pago" data-method="Boleto">
+          <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+            <div class="uni-boleto-card-title uni-boleto-desktop-cell">
+              Mensalidade Set/2025
+            </div>
+            <div class="uni-boleto-card-value uni-boleto-desktop-cell">
+              R$ 657,00
+            </div>
+            <div class="uni-boleto-card-details">
+              <span class="uni-boleto-detail-label">Data:</span>
+              <span>12/09/2025</span>
+            </div>
+            <div class="uni-boleto-desktop-cell">12/09/2025</div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <strong class="uni-boleto-detail-value">Boleto</strong>
+            </div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <span class="uni-boleto-status-tag" data-status="Pago">Pago</span>
+            </div>
+
+            <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+              <a
+                href="/api/comprovante/102/pdf"
+                target="_blank"
+                class="uni-boleto-action-btn-card"
+                aria-label="Baixar Comprovante PDF"
+              >
+                <span class="material-icons" style="font-size: 1.1em">PDF</span>
+              </a>
+              <button
+                class="uni-boleto-action-btn-card pay"
+                onclick="openModal(102)"
+                aria-label="Ver detalhes do pagamento"
+              >
+                Ver detalhes
+              </button>
+            </div>
+          </div>
+        </li>
+
+        <li class="uni-boleto-card" data-status="Pago" data-method="Cartão">
+          <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+            <div class="uni-boleto-card-title uni-boleto-desktop-cell">
+              Taxa de Matrícula
+            </div>
+            <div class="uni-boleto-card-value uni-boleto-desktop-cell">
+              R$ 300,00
+            </div>
+            <div class="uni-boleto-card-details">
+              <span class="uni-boleto-detail-label">Data:</span>
+              <span>01/08/2025</span>
+            </div>
+            <div class="uni-boleto-desktop-cell">01/08/2025</div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <strong class="uni-boleto-detail-value">Cartão</strong>
+            </div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <span class="uni-boleto-status-tag" data-status="Pago">Pago</span>
+            </div>
+
+            <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+              <a
+                href="/api/comprovante/103/pdf"
+                target="_blank"
+                class="uni-boleto-action-btn-card"
+                aria-label="Baixar Comprovante PDF"
+              >
+                <span class="material-icons" style="font-size: 1.1em">PDF</span>
+              </a>
+              <button
+                class="uni-boleto-action-btn-card pay"
+                onclick="openModal(103)"
+                aria-label="Ver detalhes do pagamento"
+              >
+                Ver detalhes
+              </button>
+            </div>
+          </div>
+        </li>
+
+        <li
+          class="uni-boleto-card"
+          data-status="Estornado"
+          data-method="PIX"
+          style="border-left-color: #ffab00"
+        >
+          <div class="uni-boleto-card-desktop-wrapper" data-status="Estornado">
+            <div class="uni-boleto-card-title uni-boleto-desktop-cell">
+              Reaplicação de Prova
+            </div>
+            <div class="uni-boleto-card-value uni-boleto-desktop-cell">
+              R$ 50,00
+            </div>
+            <div class="uni-boleto-card-details">
+              <span class="uni-boleto-detail-label">Data:</span>
+              <span>20/07/2025</span>
+            </div>
+            <div class="uni-boleto-desktop-cell">20/07/2025</div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <strong class="uni-boleto-detail-value">PIX</strong>
+            </div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <span
+                class="uni-boleto-status-tag"
+                data-status="A vencer"
+                style="background-color: #ffab00"
+                >Estornado</span
+              >
+            </div>
+
+            <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+              <button
+                class="uni-boleto-action-btn-card"
+                disabled
+                aria-label="Comprovante indisponível"
+              >
+                PDF
+              </button>
+              <button
+                class="uni-boleto-action-btn-card pay"
+                onclick="openModal(104)"
+                aria-label="Ver detalhes do estorno"
+              >
+                Ver detalhes
+              </button>
+            </div>
+          </div>
+        </li>
+
+        <li class="uni-boleto-card" data-status="Pago" data-method="Boleto">
+          <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+            <div class="uni-boleto-card-title uni-boleto-desktop-cell">
+              Mensalidade Jun/2025
+            </div>
+            <div class="uni-boleto-card-value uni-boleto-desktop-cell">
+              R$ 657,00
+            </div>
+            <div class="uni-boleto-card-details">
+              <span class="uni-boleto-detail-label">Data:</span>
+              <span>10/06/2025</span>
+            </div>
+            <div class="uni-boleto-desktop-cell">10/06/2025</div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <strong class="uni-boleto-detail-value">Boleto</strong>
+            </div>
+            <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+              <span class="uni-boleto-status-tag" data-status="Pago">Pago</span>
+            </div>
+
+            <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+              <a
+                href="/api/comprovante/105/pdf"
+                target="_blank"
+                class="uni-boleto-action-btn-card"
+                aria-label="Baixar Comprovante PDF"
+              >
+                <span class="material-icons" style="font-size: 1.1em">PDF</span>
+              </a>
+              <button
+                class="uni-boleto-action-btn-card pay"
+                onclick="openModal(105)"
+                aria-label="Ver detalhes do pagamento"
+              >
+                Ver detalhes
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <nav
+        class="uni-boleto-pagination"
+        role="navigation"
+        aria-label="Paginação do Histórico"
+      >
+        <a href="#" class="uni-boleto-page-link" aria-label="Página anterior"
+          >Anterior</a
+        >
+        <a href="#" class="uni-boleto-page-link active" aria-current="page"
+          >1</a
+        >
+        <a href="#" class="uni-boleto-page-link">2</a>
+        <a href="#" class="uni-boleto-page-link">3</a>
+        <a href="#" class="uni-boleto-page-link" aria-label="Próxima página"
+          >Próxima</a
+        >
+      </nav>
+    </main>
+
+    <div
+      class="uni-boleto-modal-overlay"
+      id="boletoModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="uni-boleto-modal-content">
+        <button
+          class="uni-boleto-modal-close"
+          onclick="closeModal()"
+          aria-label="Fechar Detalhes do Pagamento"
+        >
+          &times;
+        </button>
+        <div class="uni-boleto-modal-details">
+          <h3 id="modalTitle">Detalhes do Pagamento</h3>
+
+          <div class="uni-boleto-detail-item">
+            <strong>Descrição:</strong>
+            <span id="modalDesc"></span>
+          </div>
+
+          <div class="uni-boleto-detail-item">
+            <strong>Valor Pago:</strong>
+            <span id="modalValor"></span>
+          </div>
+
+          <div class="uni-boleto-detail-item">
+            <strong>Data e Hora:</strong>
+            <span id="modalDataHora"></span>
+          </div>
+
+          <div class="uni-boleto-detail-item">
+            <strong>Método:</strong>
+            <span id="modalMetodo"></span>
+          </div>
+
+          <div class="uni-boleto-detail-item">
+            <strong>Status:</strong>
+            <span id="modalStatus" class="uni-boleto-status-tag"></span>
+          </div>
+
+          <hr />
+
+          <h4>Informações de Transação</h4>
+
+          <div class="uni-boleto-detail-item">
+            <strong>ID da Transação:</strong>
+            <span id="modalID">T-00000000</span>
+          </div>
+
+          <div class="uni-boleto-detail-item">
+            <strong>Detalhes Adicionais:</strong>
+            <span id="modalInfo">Pagamento processado com sucesso.</span>
+          </div>
+
+          <div class="uni-boleto-qr-section" id="modalComprovanteSection">
+            <p>Clique abaixo para baixar seu comprovante oficial em PDF:</p>
+            <a
+              href="#"
+              id="modalComprovanteLink"
+              target="_blank"
+              class="uni-boleto-action-btn-card primary"
+              style="padding: 10px 20px; text-decoration: none"
+            >
+              <span class="material-icons" style="font-size: 1.1em"
+                >file_download</span
+              >
+              Baixar Comprovante
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div id="main_footer">
+        <div class="footer_p1">
+          <img
+            src="imagens/Logo-Unidesc_Branco.svg"
+            alt="logo"
+            class="img_footer"
+          />
+        </div>
+
+        <div class="footer_p2">
+          <div class="footer_links">
+            <div class="footer_container footer_colunas">
+              <div class="footer_coluna">
+                <h3>
+                  Consulte aqui o cadastro da instituição no sistema e-MEC
+                </h3>
+                <img src="imagens/sistema-emec-unidesc-5.webp" alt="" />
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Cursos</h3>
+                <ul class="link_list">
+                  <li><a href="#">Graduação Presencial</a></li>
+                  <li>
+                    <a href="#">Graduação EAD Digital (Parceria UniCESP)</a>
+                  </li>
+                  <li>
+                    <a href="#">Graduação 100% EAD (parceria UniSant'Anna)</a>
+                  </li>
+                  <li><a href="#">Pós-Graduação</a></li>
+                  <li><a href="#">Extensão</a></li>
+                  <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Endereços</h3>
+                <div class="endereços">
+                  <p>
+                    <strong>Campus I</strong>
+                    BR 040, Km 19.7, Lotes 1/12, Gleba F<br />
+                    Parque Esplanada III<br />
+                    Valparaíso de Goiás – GO<br />
+                    CEP 72.876-353<br />
+                    (61) 3878-3100
+                  </p>
+                  <p>
+                    <strong>Campus II</strong>
+                    Quadra 09, Esp. Lote D, Área Especial, Gleba D1,<br />
+                    Campus Universitário Bairro: Parque Rio Branco<br />
+                    CEP 72.870-000<br />
+                    Valparaíso de Goiás – GO<br />
+                    (61) 3627-9250
+                  </p>
+                </div>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Atendimentos</h3>
+                <ul class="Lista_contatos">
+                  <li><i class="bi bi-telephone-fill"></i> (61) 3878-3100</li>
+                  <li><i class="bi bi-whatsapp"></i> (61) 3629-9323</li>
+                  <li><i class="bi bi-headset"></i> Ouvidoria</li>
+                  <li><i class="bi bi-envelope"></i> contato@unidesc.edu.br</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p class="copyright_1">
+          © 2025 - Desenvolvido por
+          <a href="#"
+            ><strong>Arthur de Araujo Batista</strong> -
+            Arthur.Batista0167@sounidesc.com.br</a
+          >
+        </p>
+
+        <p class="copyright_2">
+          Todas as marcas registradas e direitos autorais pertencem aos seus
+          respectivos proprietários.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Dados de Exemplo para a tela de Histórico (JSON)
+      const mockPagamentos = [
+        {
+          id: 101,
+          descricao: "Mensalidade Out/2025",
+          valor: "R$ 657,00",
+          data_pagamento: "05/10/2025 às 14:30",
+          metodo: "PIX",
+          status: "Pago",
+          id_transacao: "PX992837482",
+          info: "Pagamento imediato. Chave PIX utilizada.",
+          comprovante: true,
+        },
+        {
+          id: 102,
+          descricao: "Mensalidade Set/2025",
+          valor: "R$ 657,00",
+          data_pagamento: "12/09/2025 às 10:00",
+          metodo: "Boleto",
+          status: "Pago",
+          id_transacao: "BL883745612",
+          info: "Compensação bancária concluída.",
+          comprovante: true,
+        },
+        {
+          id: 103,
+          descricao: "Taxa de Matrícula",
+          valor: "R$ 300,00",
+          data_pagamento: "01/08/2025 às 08:15",
+          metodo: "Cartão",
+          status: "Pago",
+          id_transacao: "CR774561821",
+          info: "Parcela única no cartão Visa.",
+          comprovante: true,
+        },
+        {
+          id: 104,
+          descricao: "Reaplicação de Prova",
+          valor: "R$ 50,00",
+          data_pagamento: "20/07/2025 às 17:50",
+          metodo: "PIX",
+          status: "Estornado",
+          id_transacao: "PX661298734",
+          info: "Estorno solicitado e concluído em 21/07/2025.",
+          comprovante: false,
+        },
+        {
+          id: 105,
+          descricao: "Mensalidade Jun/2025",
+          valor: "R$ 657,00",
+          data_pagamento: "10/06/2025 às 09:30",
+          metodo: "Boleto",
+          status: "Pago",
+          id_transacao: "BL553948756",
+          info: "Compensação bancária concluída.",
+          comprovante: true,
+        },
+      ];
+
+      // Função adaptada para o Modal de Histórico
+      function openModal(id) {
+        const pagamento = mockPagamentos.find((p) => p.id === id);
+        const modal = document.getElementById("boletoModal");
+
+        if (!pagamento) return;
+
+        // Preenche o Modal com dados de pagamento
+        document.getElementById("modalDesc").textContent = pagamento.descricao;
+        document.getElementById("modalValor").textContent = pagamento.valor;
+        document.getElementById("modalDataHora").textContent =
+          pagamento.data_pagamento;
+        document.getElementById("modalMetodo").textContent = pagamento.metodo;
+        document.getElementById("modalID").textContent = pagamento.id_transacao;
+        document.getElementById("modalInfo").textContent = pagamento.info;
+
+        const modalStatus = document.getElementById("modalStatus");
+        modalStatus.textContent = pagamento.status;
+        // Adapta o atributo de status para o CSS existente (Estornado usa o "A vencer" ou cria um novo)
+        modalStatus.setAttribute(
+          "data-status",
+          pagamento.status === "Estornado" ? "A vencer" : pagamento.status
+        );
+
+        // Link de Comprovante
+        const comprovanteSection = document.getElementById(
+          "modalComprovanteSection"
+        );
+        const comprovanteLink = document.getElementById("modalComprovanteLink");
+
+        if (pagamento.comprovante) {
+          comprovanteSection.style.display = "block";
+          comprovanteLink.href = `/api/comprovante/${id}/pdf`;
+          comprovanteLink.textContent = " Baixar Comprovante Oficial";
+        } else {
+          comprovanteSection.style.display = "block"; // Mostrar a seção, mas com mensagem diferente
+          comprovanteLink.removeAttribute("href");
+          comprovanteLink.style.cursor = "not-allowed";
+          comprovanteLink.textContent =
+            " Comprovante Indisponível (Estorno/Cancelamento)";
+        }
+
+        modal.classList.add("open");
+        modal.focus();
+      }
+
+      function closeModal() {
+        document.getElementById("boletoModal").classList.remove("open");
+      }
+
+      // Função de filtro adaptada para 'data-method'
+      document.querySelectorAll(".uni-boleto-filter-btn").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const filter = event.target.getAttribute("data-filter");
+
+          document
+            .querySelectorAll(".uni-boleto-filter-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          event.target.classList.add("active");
+
+          document.querySelectorAll(".uni-boleto-card").forEach((card) => {
+            const status = card.getAttribute("data-status");
+            const method = card.getAttribute("data-method");
+
+            if (filter === "all" || status === filter || method === filter) {
+              card.style.display = "list-item";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      function openMonthFilter() {
+        // 1. **(Ideal)** Abrir um modal ou dropdown com um calendário real (biblioteca externa)
+
+        // 2. **(Simulação)** Por enquanto, vamos simular que o mês mudou
+        const currentMonth = document.getElementById("monthFilterInput").value;
+
+        // Simula a mudança para o próximo mês para provar que a função está rodando
+        if (currentMonth.includes("Setembro")) {
+          document.getElementById("monthFilterInput").value = "Outubro / 2025";
+          console.log("Filtro de mês/ano ativado: Mudando para Outubro.");
+        } else {
+          document.getElementById("monthFilterInput").value = "Setembro / 2025";
+          console.log("Filtro de mês/ano ativado: Mudando para Setembro.");
+        }
+
+        // **Ação Real**: Aqui, você chamaria a função para recarregar a lista (e.g., loadPayments('Outubro'))
+        // loadPayments('Outubro / 2025');
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <img src="imagens/Logo-Unidesc_Branco.svg" alt="logo" class="Logo" />
+        </div>
+    </header>
+
+    <header class="uni-boleto-header" role="banner">
+        <div class="uni-boleto-container uni-boleto-header-content">
+            <h1 class="uni-boleto-logo">🎓 Unidesc <span aria-hidden="true" class="material-icons">Controle</span></h1>
+        </div>
+    </header>
+
+    <main class="uni-boleto-container" role="main">
+
+        <h2>Painel de Pagamentos</h2>
+
+        <section class="uni-boleto-toolbar" role="toolbar" aria-label="Filtros e Ações de Boleto">
+            <div class="uni-boleto-filters">
+                <button class="uni-boleto-filter-btn active" data-filter="all">Todos</button>
+                <button class="uni-boleto-filter-btn" data-filter="Vencido" aria-label="Filtrar Vencidos">Vencidos</button>
+                <button class="uni-boleto-filter-btn" data-filter="A vencer" aria-label="Filtrar a Vencer">A vencer</button>
+                <button class="uni-boleto-filter-btn" data-filter="Pago" aria-label="Filtrar Pagos">Pagos</button>
+                <button class="uni-boleto-filter-btn" data-filter="Pendente" aria-label="Filtrar Pendentes">Pendentes</button>
+            </div>
+            <div class="uni-boleto-search-action">
+                <input type="search" class="uni-boleto-search-input" placeholder="Buscar por matrícula ou nome..." aria-label="Buscar boletos por matrícula ou nome">
+                <button class="uni-boleto-action-btn primary">
+                    <span class="material-icons" style="font-size: 1.1em;">Gerar novo boleto</span>
+                </button>
+            </div>
+        </section>
+
+        <div class="uni-boleto-desktop-header" aria-hidden="true">
+            <div class="uni-boleto-desktop-cell">Descrição / Código</div>
+            <div class="uni-boleto-desktop-cell">Valor</div>
+            <div class="uni-boleto-desktop-cell">Emissão</div>
+            <div class="uni-boleto-desktop-cell">Vencimento</div>
+            <div class="uni-boleto-desktop-cell">Status</div>
+            <div class="uni-boleto-desktop-cell">Ações</div>
+        </div>
+
+        <ul class="uni-boleto-list">
+
+            <li class="uni-boleto-card" data-status="Vencido">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Vencido">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Mensalidade Nov/2025</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 657,00</div>
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Emissão:</span> <span>01/11/2025</span>
+                    </div>
+                    <div class="uni-boleto-desktop-cell">01/11/2025</div>
+
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell uni-boleto-tooltip-container">
+                        <strong class="uni-boleto-detail-value vencido">10/11/2025</strong>
+                    </div>
+
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell uni-boleto-tooltip-container">
+                        <span class="uni-boleto-status-tag" data-status="Vencido">Vencido</span>
+                        <span class="uni-boleto-tooltip-text" role="alert">Boleto vencido! Multas e juros podem ser aplicados.</span>
+                    </div>
+
+                    <div class="uni-boleto-barcode-section">
+                        <span class="uni-boleto-barcode-short">23790.00000 00000...</span>
+                        <button class="uni-boleto-btn-copy" onclick="copyCode('23790.0000000000000000000000000000000000000000000000', this)" aria-label="Copiar código de barras">Copiar código</button>
+                        <span class="copy-feedback" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <button class="uni-boleto-action-btn-card pay" onclick="openModal(1)" aria-label="Ver detalhes do boleto">Pagar</button>
+                        <a href="/api/boletos/1/pdf" target="_blank" class="uni-boleto-action-btn-card" aria-label="Baixar PDF do Boleto"><span class="material-icons" style="font-size: 1.1em;">Gerar PDF</span></a>
+                        
+                    </div>
+                </div>
+            </li>
+
+            <li class="uni-boleto-card" data-status="Pendente">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Pendente">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Taxa de Biblioteca</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 45,00</div>
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Emissão:</span> <span>15/10/2025</span>
+                    </div>
+                    <div class="uni-boleto-desktop-cell">15/10/2025</div>
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+                        <strong class="uni-boleto-detail-value">01/12/2025</strong>
+                    </div>
+
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell uni-boleto-tooltip-container">
+                        <span class="uni-boleto-status-tag" data-status="Pendente">Pendente</span>
+                    </div>
+
+                    <div class="uni-boleto-barcode-section">
+                        <span class="uni-boleto-barcode-short">34191.44444 44444...</span>
+                        <button class="uni-boleto-btn-copy" onclick="copyCode('34191.4444444444444444444444444444444444444444444444', this)" aria-label="Copiar código de barras">Copiar código</button>
+                        <span class="copy-feedback" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <button class="uni-boleto-action-btn-card pay" onclick="openModal(2)" aria-label="Pagar Taxa de Biblioteca">Pagar</button>
+                        <a href="/api/boletos/2/pdf" target="_blank" class="uni-boleto-action-btn-card" aria-label="Baixar PDF do Boleto"><span class="material-icons" style="font-size: 1.1em;">Gerar PDF</span></a>
+                        
+                    </div>
+                </div>
+            </li>
+
+            <li class="uni-boleto-card" data-status="A vencer">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="A vencer">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Mensalidade Dez/2025</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 657,00</div>
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Emissão:</span> <span>18/11/2025</span>
+                    </div>
+                    <div class="uni-boleto-desktop-cell">18/11/2025</div>
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+                        <strong class="uni-boleto-detail-value">10/12/2025</strong> <br>
+                    </div>
+
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell uni-boleto-tooltip-container">
+                        <span class="uni-boleto-status-tag" data-status="A vencer"> A vencer</span>
+                    </div>
+
+                    <div class="uni-boleto-barcode-section">
+                        <span class="uni-boleto-barcode-short">00190.00000 00000...</span>
+                        <button class="uni-boleto-btn-copy" onclick="copyCode('00190.0000000000000000000000000000000000000000000000', this)" aria-label="Copiar código de barras">Copiar código</button>
+                        <span class="copy-feedback" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <button class="uni-boleto-action-btn-card pay" onclick="openModal(3)" aria-label="Pagar Mensalidade Dez/2025">Pagar</button>
+                        <a href="/api/boletos/3/pdf" target="_blank" class="uni-boleto-action-btn-card" aria-label="Baixar PDF do Boleto"><span class="material-icons" style="font-size: 1.1em;">Gerar PDF</span></a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="uni-boleto-card" data-status="Pago">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Pago">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Seguro Acadêmico</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 75,50</div>
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Emissão:</span> <span>05/11/2025</span>
+                    </div>
+                    <div class="uni-boleto-desktop-cell">05/11/2025</div>
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+                        <strong class="uni-boleto-detail-value">30/11/2025</strong>
+                    </div>
+
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell">
+                        <span class="uni-boleto-status-tag" data-status="Pago">Pago</span>
+                    </div>
+
+                    <div class="uni-boleto-barcode-section">
+                        <span class="uni-boleto-barcode-short">03399.99999 99999...</span>
+                        <button class="uni-boleto-btn-copy" onclick="copyCode('03399.9999999999999999999999999999999999999999999999', this)" aria-label="Copiar código de barras">Copiar código</button>
+                        <span class="copy-feedback" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <!-- <button class="uni-boleto-action-btn-card" onclick="openModal(4)" aria-label="Ver detalhes do boleto">Ver detalhes</button> -->
+                        <a href="/api/boletos/4/pdf" target="_blank" class="uni-boleto-action-btn-card" aria-label="Baixar PDF do Boleto"><span class="material-icons" style="font-size: 1.1em;">Gerar Comprovante</span></a>
+                        
+                    </div>
+                </div>
+            </li>
+
+            <li class="uni-boleto-card" data-status="Vencido">
+                <div class="uni-boleto-card-desktop-wrapper" data-status="Vencido">
+                    <div class="uni-boleto-card-title uni-boleto-desktop-cell">Multa Reaplicação</div>
+                    <div class="uni-boleto-card-value uni-boleto-desktop-cell">R$ 20,00</div>
+                    <div class="uni-boleto-card-details">
+                        <span class="uni-boleto-detail-label">Emissão:</span> <span>01/09/2025</span>
+                    </div>
+                    <div class="uni-boleto-desktop-cell">01/09/2025</div>
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell uni-boleto-tooltip-container">
+                        <strong class="uni-boleto-detail-value vencido">15/09/2025</strong>
+                    </div>
+
+                    <div class="uni-boleto-detail-label uni-boleto-desktop-cell uni-boleto-tooltip-container">
+                        <span class="uni-boleto-status-tag" data-status="Vencido">Vencido</span>
+                        <span class="uni-boleto-tooltip-text" role="alert">Multa vencida. Consulte a secretaria para renegociação.</span>
+                    </div>
+
+                    <div class="uni-boleto-barcode-section">
+                        <span class="uni-boleto-barcode-short">10490.55555 55555...</span>
+                        <button class="uni-boleto-btn-copy" onclick="copyCode('10490.5555555555555555555555555555555555555555555555', this)" aria-label="Copiar código de barras">Copiar código</button>
+                        <span class="copy-feedback" aria-live="polite" aria-atomic="true"></span>
+                    </div>
+
+                    <div class="uni-boleto-card-actions uni-boleto-desktop-actions">
+                        <button class="uni-boleto-action-btn-card pay" onclick="openModal(5)" aria-label="Pagar Multa Reaplicação">Pagar</button>
+                        <a href="/api/boletos/5/pdf" target="_blank" class="uni-boleto-action-btn-card" aria-label="Baixar PDF do Boleto"><span class="material-icons" style="font-size: 1.1em;">Gerar PDF</span></a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <nav class="uni-boleto-pagination" role="navigation" aria-label="Paginação da Lista de Boletos">
+            <a href="#" class="uni-boleto-page-link" aria-label="Página anterior">Anterior</a>
+            <a href="#" class="uni-boleto-page-link active" aria-current="page">1</a>
+            <a href="#" class="uni-boleto-page-link">2</a>
+            <a href="#" class="uni-boleto-page-link">3</a>
+            <a href="#" class="uni-boleto-page-link" aria-label="Próxima página">Próxima</a>
+        </nav>
+
+    </main>
+
+    <div class="uni-boleto-modal-overlay" id="boletoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="uni-boleto-modal-content">
+            <button class="uni-boleto-modal-close" onclick="closeModal()" aria-label="Fechar Detalhes do Boleto">&times;</button>
+            <div class="uni-boleto-modal-details">
+                <h3 id="modalTitle">Detalhes do Boleto</h3>
+
+                <div class="uni-boleto-detail-item">
+                    <strong>Descrição:</strong>
+                    <span id="modalDesc"></span>
+                </div>
+
+                <div class="uni-boleto-detail-item">
+                    <strong>Valor Atualizado:</strong>
+                    <span id="modalValor"></span>
+                </div>
+
+                <div class="uni-boleto-detail-item">
+                    <strong>Vencimento:</strong>
+                    <span id="modalVencimento" style="font-weight: 600;"></span>
+                </div>
+
+                <div class="uni-boleto-detail-item">
+                    <strong>Status:</strong>
+                    <span id="modalStatus" class="uni-boleto-status-tag"></span>
+                </div>
+
+                <hr>
+
+                <h4>Instruções de Pagamento e Código</h4>
+
+                <div class="uni-boleto-detail-item">
+                    <strong>Multas/Juros:</strong>
+                    <span id="modalMultas"></span>
+                </div>
+
+                <div class="uni-boleto-detail-item">
+                    <strong>Linha Digitável Completa:</strong>
+                </div>
+                <div class="uni-boleto-digitavel-full" id="modalLinha"></div>
+                <button class="uni-boleto-btn-copy" onclick="copyCode(document.getElementById('modalLinha').textContent, this)" style="margin-bottom: 15px; display: block; border: 1px solid #dee2e6;">Copiar Linha Digitável</button>
+
+                <div class="uni-boleto-qr-section" id="modalPixSection">
+                    <strong>Pague com PIX</strong>
+                    <div class="uni-boleto-qr-code-placeholder" aria-label="QR Code para pagamento Pix (simulado)">
+                        <img src="imagens/Pix-Pagamento.png" class="Pix-Pagamento">
+                    </div>
+                    <p style="font-size: 0.8rem; color: #777;">Escaneie o código para pagar instantaneamente.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mockBoletos = [
+            { "id":1, "descricao":"Mensalidade Nov/2025", "valor":"R$ 657,00", "vencimento":"10/11/2025", "status":"Vencido", "linha_digitavel":"23790.00000 00000.000000 00000.000000 1 00000000000000", "multas":"R$ 5,00 (após vencimento)", "pix_qr":true },
+            { "id":2, "descricao":"Taxa de Biblioteca", "valor":"R$ 45,00", "vencimento":"01/12/2025", "status":"Pendente", "linha_digitavel":"34191.44444 44444.444444 44444.444444 2 11111111111111", "multas":"Isento", "pix_qr":true },
+            { "id":3, "descricao":"Mensalidade Dez/2025", "valor":"R$ 657,00", "vencimento":"10/12/2025", "status":"A vencer", "linha_digitavel":"00190.00000 00000.000000 00000.000000 3 22222222222222", "multas":"R$ 0,00 (até vencimento)", "pix_qr":true },
+            { "id":4, "descricao":"Seguro Acadêmico", "valor":"R$ 75,50", "vencimento":"30/11/2025", "status":"Pago", "linha_digitavel":"03399.99999 99999.999999 99999.999999 4 33333333333333", "multas":"Pago em dia", "pix_qr":false },
+            { "id":5, "descricao":"Multa Reaplicação", "valor":"R$ 20,00", "vencimento":"15/09/2025", "status":"Vencido", "linha_digitavel":"10490.55555 55555.555555 55555.555555 5 44444444444444", "multas":"R$ 2,00 de juros", "pix_qr":true }
+        ];
+
+        function openModal(id) {
+            const boleto = mockBoletos.find(b => b.id === id);
+            const modal = document.getElementById('boletoModal');
+
+            if (!boleto) return;
+
+            document.getElementById('modalDesc').textContent = boleto.descricao;
+            document.getElementById('modalValor').textContent = boleto.valor;
+            document.getElementById('modalVencimento').textContent = boleto.vencimento;
+            
+            const modalStatus = document.getElementById('modalStatus');
+            modalStatus.textContent = boleto.status;
+            modalStatus.setAttribute('data-status', boleto.status);
+            
+            document.getElementById('modalLinha').textContent = boleto.linha_digitavel;
+            document.getElementById('modalMultas').textContent = boleto.multas;
+
+            const pixSection = document.getElementById('modalPixSection');
+            pixSection.style.display = boleto.pix_qr ? 'block' : 'none';
+            
+            modal.classList.add('open');
+            modal.focus();
+        }
+
+        function closeModal() {
+            document.getElementById('boletoModal').classList.remove('open');
+        }
+
+        function copyCode(code, buttonElement) {
+            if (navigator.clipboard) {
+                // Remove espaços antes de copiar para garantir a linha digitável correta
+                navigator.clipboard.writeText(code.replace(/ /g, '')).then(() => {
+                    const section = buttonElement.closest('.uni-boleto-barcode-section') || buttonElement.parentNode;
+                    let feedbackElement = section.querySelector('.copy-feedback');
+                    
+                    if (!feedbackElement) {
+                        feedbackElement = document.createElement('span');
+                        feedbackElement.classList.add('copy-feedback');
+                        feedbackElement.setAttribute('aria-live', 'polite');
+                        feedbackElement.style.marginLeft = '10px';
+                        buttonElement.after(feedbackElement);
+                    }
+                    
+                    feedbackElement.textContent = 'Copiado!';
+                    setTimeout(() => {
+                        feedbackElement.textContent = '';
+                    }, 2000);
+
+                }).catch(err => {
+                    console.error('Falha ao copiar: ', err);
+                    alert('Erro ao copiar código. Tente novamente.');
+                });
+            } else {
+                alert('O seu navegador não suporta a cópia automática. O código é: ' + code);
+            }
+        }
+        
+        // Listener de Filtro (Ajustado o nome da classe)
+        document.querySelectorAll('.uni-boleto-filter-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const filter = event.target.getAttribute('data-filter');
+                
+                document.querySelectorAll('.uni-boleto-filter-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+
+                document.querySelectorAll('.uni-boleto-card').forEach(card => {
+                    const status = card.getAttribute('data-status');
+                    if (filter === 'all' || status === filter) {
+                        card.style.display = 'list-item';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+    </script>
+
+    <footer>
+      <div id="main_footer">
+        <div class="footer_p1">
+          <img
+            src="imagens/Logo-Unidesc_Branco.svg"
+            alt="logo"
+            class="img_footer"
+          />
+        </div>
+
+        <div class="footer_p2">
+          <div class="footer_links">
+            <div class="footer_container footer_colunas">
+              <div class="footer_coluna">
+                <h3>
+                  Consulte aqui o cadastro da instituição no sistema e-MEC
+                </h3>
+                <img src="imagens/sistema-emec-unidesc-5.webp" alt="" />
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Cursos</h3>
+                <ul class="link_list">
+                  <li><a href="#">Graduação Presencial</a></li>
+                  <li>
+                    <a href="#">Graduação EAD Digital (Parceria UniCESP)</a>
+                  </li>
+                  <li>
+                    <a href="#">Graduação 100% EAD (parceria UniSant'Anna)</a>
+                  </li>
+                  <li><a href="#">Pós-Graduação</a></li>
+                  <li><a href="#">Extensão</a></li>
+                  <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Endereços</h3>
+                <div class="endereços">
+                  <p>
+                    <strong>Campus I</strong>
+                    BR 040, Km 19.7, Lotes 1/12, Gleba F<br />
+                    Parque Esplanada III<br />
+                    Valparaíso de Goiás – GO<br />
+                    CEP 72.876-353<br />
+                    (61) 3878-3100
+                  </p>
+                  <p>
+                    <strong>Campus II</strong>
+                    Quadra 09, Esp. Lote D, Área Especial, Gleba D1,<br />
+                    Campus Universitário Bairro: Parque Rio Branco<br />
+                    CEP 72.870-000<br />
+                    Valparaíso de Goiás – GO<br />
+                    (61) 3627-9250
+                  </p>
+                </div>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Atendimentos</h3>
+                <ul class="Lista_contatos">
+                  <li><i class="bi bi-telephone-fill"></i> (61) 3878-3100</li>
+                  <li><i class="bi bi-whatsapp"></i> (61) 3629-9323</li>
+                  <li><i class="bi bi-headset"></i> Ouvidoria</li>
+                  <li><i class="bi bi-envelope"></i> contato@unidesc.edu.br</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p class="copyright_1">
+          © 2025 - Desenvolvido por
+          <a href="#"
+            ><strong>Arthur de Araujo Batista</strong> -
+            Arthur.Batista0167@sounidesc.com.br</a
+          >
+        </p>
+
+        <p class="copyright_2">
+          Todas as marcas registradas e direitos autorais pertencem aos seus
+          respectivos proprietários.
+        </p>
+      </div>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unidesc</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-container">
+        <img src="imagens/Logo-Unidesc_Branco.svg" alt="logo" class="Logo" />
+      </div>
+    </header>
+
+    <div class="dashboard-container">
+      <header class="header">
+        <h1>🎓 Meu Painel Acadêmico</h1>
+      </header>
+
+      <main class="main-content">
+        <section class="main-column">
+          <div class="highlight-cards">
+            <div class="card payment-card due-soon">
+              <span class="material-icons">Próxima</span>
+              <div class="card-info">
+                <h2>Próxima Parcela</h2>
+                <p class="value">Vence em 12 dias</p>
+                <p class="detail">R$ 657,00 (05/12)</p>
+              </div>
+            </div>
+
+            <div class="card payment-card overdue-card">
+              <span class="material-icons">Atenção</span>
+              <div class="card-info">
+                <h2>Parcelas Atrasadas</h2>
+                <p class="value-overdue">1 Parcela Aberta</p>
+                <p class="detail">Regularize para evitar bloqueio.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card chart-card">
+            <h2>Evolução dos Pagamentos (Semestre)</h2>
+            <p class="chart-description">Progresso: 4 de 6 parcelas pagas.</p>
+            <div class="payment-chart">
+              <div class="bar paid" style="height: 80%">Julho</div>
+              <div class="bar paid" style="height: 90%">Agosto</div>
+              <div class="bar paid" style="height: 100%">Setembro</div>
+              <div class="bar paid" style="height: 70%">Outubro</div>
+              <div class="bar pending" style="height: 50%">Novembro</div>
+              <div class="bar pending" style="height: 40%">Dezembro</div>
+            </div>
+          </div>
+
+          <div class="card notifications-card">
+            <h2>🔔 Notificações do Sistema</h2>
+            <ul class="notification-list">
+              <li class="success">
+                <span class="material-icons">Aprovação</span>
+                Comprovante do mês de Outubro Aprovado!
+              </li>
+              <li class="info">
+                <span class="material-icons">Novidade</span>
+                Novo documento: disponível: Recibo de Quitação Semestral.
+              </li>
+              <li class="warning">
+                <span class="material-icons">Em Espera</span>
+                Aguardando validação do comprovante de Novembro.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <aside class="sidebar-column">
+          <div class="card actions-card">
+            <h2>🚀 Ações Rápidas</h2>
+            <div class="shortcuts">
+              <button class="shortcut-btn primary">
+                <a href="Gerar_Boleto.html"><span class="material-icons">Gerar Boleto</span></a>
+              </button>
+              <button class="shortcut-btn secondary">
+                <a href="comprovantes.html"><span class="material-icons">Enviar Comprovante</span></a>
+              </button>
+              <button class="shortcut-btn tertiary">
+                <a href="Historico.html"><span class="material-icons">Histórico de Pagamentos</span></a>
+              </button>
+              <button class="shortcut-btn light">
+                <a href="boletos.html"><span class="material-icons">Painel de Pagamentos</span></a>
+              </button>
+            </div>
+          </div>
+
+            <div class="card info-card">
+                <h2>📚 Informações do Aluno</h2>
+
+                <div class="info-item">
+                    <span class="info-label">Matrícula:</span>
+                    <span class="info-value bold-primary">2021054321</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Período:</span>
+                    <span class="info-value">7° Semestre</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Turno:</span>
+                    <span class="info-value">Noturno</span>
+                </div>
+
+                <hr class="info-divider">
+
+                <div class="info-links">
+                    <a href="#" class="info-link"><span class="material-icons">Matérias do Semestre</span></a>
+                    <a href="#" class="info-link"><span class="material-icons">Meus Documentos</span></a>
+                    <a href="#" class="info-link"><span class="material-icons">Atualizar Dados Pessoais</span></a>
+                    <a href="#" class="info-link"><span class="material-icons">Boletim</span></a>
+                    <a href="#" class="info-link"><span class="material-icons">Carteira Digital</span></a>
+
+                </div>
+
+            </div>
+        </aside>
+      </main>
+    </div>
+
+    <footer>
+      <div id="main_footer">
+        <div class="footer_p1">
+          <img
+            src="imagens/Logo-Unidesc_Branco.svg"
+            alt="logo"
+            class="img_footer"
+          />
+        </div>
+
+        <div class="footer_p2">
+          <div class="footer_links">
+            <div class="footer_container footer_colunas">
+              <div class="footer_coluna">
+                <h3>
+                  Consulte aqui o cadastro da instituição no sistema e-MEC
+                </h3>
+                <img src="imagens/sistema-emec-unidesc-5.webp" alt="" />
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Cursos</h3>
+                <ul class="link_list">
+                  <li><a href="#">Graduação Presencial</a></li>
+                  <li>
+                    <a href="#">Graduação EAD Digital (Parceria UniCESP)</a>
+                  </li>
+                  <li>
+                    <a href="#">Graduação 100% EAD (parceria UniSant'Anna)</a>
+                  </li>
+                  <li><a href="#">Pós-Graduação</a></li>
+                  <li><a href="#">Extensão</a></li>
+                  <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Endereços</h3>
+                <div class="endereços">
+                  <p>
+                    <strong>Campus I</strong>
+                    BR 040, Km 19.7, Lotes 1/12, Gleba F<br />
+                    Parque Esplanada III<br />
+                    Valparaíso de Goiás – GO<br />
+                    CEP 72.876-353<br />
+                    (61) 3878-3100
+                  </p>
+                  <p>
+                    <strong>Campus II</strong>
+                    Quadra 09, Esp. Lote D, Área Especial, Gleba D1,<br />
+                    Campus Universitário Bairro: Parque Rio Branco<br />
+                    CEP 72.870-000<br />
+                    Valparaíso de Goiás – GO<br />
+                    (61) 3627-9250
+                  </p>
+                </div>
+              </div>
+
+              <div class="footer_coluna">
+                <h3>Atendimentos</h3>
+                <ul class="Lista_contatos">
+                  <li><i class="bi bi-telephone-fill"></i> (61) 3878-3100</li>
+                  <li><i class="bi bi-whatsapp"></i> (61) 3629-9323</li>
+                  <li><i class="bi bi-headset"></i> Ouvidoria</li>
+                  <li><i class="bi bi-envelope"></i> contato@unidesc.edu.br</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p class="copyright_1">
+          © 2025 - Desenvolvido por
+          <a href="#"
+            ><strong>Arthur de Araujo Batista</strong> -
+            Arthur.Batista0167@sounidesc.com.br</a
+          >
+        </p>
+
+        <p class="copyright_2">
+          Todas as marcas registradas e direitos autorais pertencem aos seus
+          respectivos proprietários.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
